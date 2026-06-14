@@ -71,3 +71,107 @@ Provide:
 - Render/proof frame paths.
 - Any remaining subjective items that need user approval.
 
+## Visual Intake Checklist
+
+Before designing:
+
+- Identify audience and context.
+- Identify brand colors and forbidden colors.
+- Identify whether the piece is product demo, launch film, UGC, ad, or enterprise explainer.
+- Identify whether references are exact final frames or mood references.
+- Identify whether the user wants premium restraint or high-energy editing.
+- Identify whether typography must match an existing product or brand.
+
+## Design System Defaults
+
+When no brand system is supplied, default to:
+
+- Warm off-white background.
+- Black primary text.
+- One accent color.
+- Soft shadows.
+- Conservative border radii.
+- Plenty of negative space.
+- Direct labels near objects.
+- Few decorative elements.
+
+Do not default to blue/purple gradients, neon lines, or dark sci-fi dashboards.
+
+## Motion Palette
+
+Use a small palette of repeated motion:
+
+- Camera push.
+- Camera swipe.
+- Path draw.
+- Material scale-in.
+- Soft blur resolving to sharp.
+- Highlight sweep.
+- Subtle shimmer.
+- Particle drift.
+- Gentle hold motion.
+
+Repeating a small motion vocabulary makes multi-scene videos feel coherent.
+
+## Component Size Discipline
+
+For fixed-format video:
+
+- Define dimensions explicitly.
+- Keep title hierarchy separate from card hierarchy.
+- Make cards smaller than instinct suggests.
+- Leave room for captions.
+- Test final frame with captions on.
+- Avoid cards inside cards.
+- Avoid chart labels that require a legend to understand.
+
+## Brand Cleanup Checklist
+
+When changing colors:
+
+- Replace CSS variables.
+- Replace raw hex values.
+- Replace SVG fills and strokes.
+- Replace shadows and glows.
+- Replace gradients.
+- Replace duplicated carryover frame styles.
+- Leave real logos alone unless requested.
+- Leave product demo footage alone unless requested.
+
+## Reference Matching Checklist
+
+Compare:
+
+- Object count.
+- Relative positions.
+- Scale.
+- Typography weight.
+- Line thickness.
+- Border radius.
+- Background warmth.
+- Shadow softness.
+- Label placement.
+- Final hold readability.
+
+## Questions To Ask
+
+Ask if:
+
+- The reference image conflicts with written brand style.
+- A logo color conflicts with requested theme.
+- A crop or caption may hide important UI.
+- The user asks for a subjective style change without enough preference.
+
+Do not ask if the answer can be proven with a proof frame.
+
+## Failure Recovery
+
+If user says it feels off:
+
+- Check scale first.
+- Check spacing second.
+- Check color consistency third.
+- Check motion timing fourth.
+- Check typography last.
+
+Most "not premium" complaints come from oversized elements, too many colors, or uncontrolled motion.

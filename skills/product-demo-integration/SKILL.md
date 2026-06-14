@@ -68,3 +68,93 @@ Return:
 - Render path.
 - Proof frames for tightest crop and key product moments.
 
+## Product Moment Map
+
+Create a moment map before editing:
+
+- Recording timestamp.
+- What is visible.
+- Narration phrase.
+- Desired global timestamp.
+- Whether cursor matters.
+- Whether scroll position matters.
+- Whether captions overlap.
+- Whether crop is safe.
+
+Use this map to decide trims and retiming.
+
+## Crop Decision Matrix
+
+Choose no crop when:
+
+- The user accepts canvas/background.
+- Zooms move across the screen.
+- Main text is cut by a tight crop.
+- The product state is more important than polish.
+
+Choose light crop when:
+
+- Canvas is distracting but UI stays centered.
+- Captions need more room.
+- Browser chrome or dead margin can be removed safely.
+
+Choose dynamic crop only when:
+
+- Each crop rectangle is mapped.
+- The movement feels intentional.
+- All key product states have proof frames.
+
+## Narration Sync
+
+Sync product states to spoken phrases:
+
+- Start transition before the phrase if the product must be visible on the phrase.
+- Let final product frame hold after the phrase if comprehension matters.
+- Slow pre-moment footage rather than speeding a product scroll unnaturally.
+- Do not cut mid-word in narration to reach a product state.
+
+## Screen Recording Cleanup
+
+Check:
+
+- Cursor visibility.
+- Browser UI.
+- Notification popups.
+- Dead time.
+- Blank loading screens.
+- Accidental desktop edges.
+- Scroll speed.
+- Zoom focus.
+
+Only remove or hide these if it does not harm product clarity.
+
+## Caption Safety
+
+If captions are burned in:
+
+- Check bottom nav bars.
+- Check product tables.
+- Check modal buttons.
+- Check timeline controls.
+- Move caption margin or choose a different proof frame if needed.
+
+## User Approval Points
+
+Ask before:
+
+- Cropping out visible canvas.
+- Removing cursor.
+- Speeding footage dramatically.
+- Blurring or masking product details.
+- Replacing real footage with recreated UI.
+
+## Handoff Format
+
+Report:
+
+- Product clip used.
+- Crop strategy.
+- Trim points.
+- Retime ratios.
+- Key proof frames.
+- Any UI that remains imperfect by design.

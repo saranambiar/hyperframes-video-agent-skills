@@ -23,7 +23,7 @@ The goal is not to replace HyperFrames. The goal is to capture production patter
 
 ## What This Is Not
 
-This is not an official HyperFrames, HeyGen, or Agentic OS repository.
+This is not an official HyperFrames, HeyGen, or any third-party product repository.
 
 This repo does not vendor HyperFrames, clone its official docs, or ship a rendering engine. Use HyperFrames for composition and rendering. Use this repo as an agent-facing production layer around it.
 

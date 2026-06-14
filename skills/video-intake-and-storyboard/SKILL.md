@@ -74,3 +74,92 @@ Avoid treating these as optional:
 
 Produce a filled scene spec or storyboard, plus a short list of decisions still needed. If all decisions are derivable from assets and prior context, proceed without asking.
 
+## Scene Spec Quality Bar
+
+A scene spec is ready to implement when it answers:
+
+- What happens in the first frame.
+- What happens in the final frame.
+- What changes over time.
+- What narration or audio drives timing.
+- What exact timestamp matters most.
+- What prior scene must remain untouched.
+- What assets are required.
+- What style must be reused.
+- What visual references control layout.
+- What proof frames will demonstrate success.
+
+## Separate Specific Content From Pattern
+
+When converting prompts, split notes into:
+
+- Project-specific content: names, logos, narration, product UI, brand copy, private filenames.
+- Reusable pattern: camera swipe, chart draw, caption preview, crop safety, music ducking, final-frame proof.
+
+Only reusable patterns belong in future skills or examples.
+
+## Timestamp Handling
+
+Treat timestamps as production constraints:
+
+- "At 5s" means visible by that global or local time.
+- "Start around 3s" means animation may begin slightly earlier if it must be visible by 3s.
+- "Land by 10s" means final state should be reached at or before 10s.
+- "Hold for 3s" means no major layout change during that hold.
+- "Do not appear before" means set initial state and reveal only after the cue.
+
+Always record whether timestamps are local to a scene or global to the full video.
+
+## Reference Image Handling
+
+For a reference image:
+
+- Identify what must match: composition, color, size, text, position, or only concept.
+- Identify what may differ: exact copy, real data, logo art, camera crop, or animation path.
+- Work backward from final frame.
+- Plan a final-frame proof.
+- Plan a next-scene carryover proof if the next scene begins from this frame.
+
+## Approval Boundaries
+
+Capture phrases like:
+
+- "Do not modify Scene 01."
+- "Treat this as approved."
+- "Do not regenerate from scratch."
+- "Keep style, typography, colors, and components."
+- "Only update this transition."
+- "Use the attached image only as reference."
+
+These are constraints, not suggestions.
+
+## Useful Clarifying Questions
+
+Ask only if not discoverable:
+
+- Is the audio final or reference-only?
+- Should the final frame match the image exactly or directionally?
+- Is the raw screen recording allowed to show its canvas?
+- Should captions appear during silent sections?
+- Should music rise during pauses or stay low?
+
+## Storyboard Failure Modes
+
+Watch for:
+
+- Scene durations that do not match audio durations.
+- A scene that depends on an uncreated prior final frame.
+- A reference image that conflicts with written timing.
+- A user saying "ignore this reference" after it was already used.
+- A final scene change that requires earlier caption or audio updates.
+
+## Handoff Format
+
+For implementation, hand off:
+
+- Filled scene spec.
+- Filled storyboard when multi-scene.
+- Asset list.
+- Locked scene list.
+- Open questions.
+- Recommended implementation skill order.

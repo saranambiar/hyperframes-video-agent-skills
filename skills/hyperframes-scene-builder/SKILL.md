@@ -76,3 +76,104 @@ After rendering:
 
 Return changed composition files, render command used, render path, and proof frame paths.
 
+## File Organization Guidance
+
+Prefer:
+
+- One HTML file per scene.
+- Small sub-compositions for reusable sections.
+- Shared design tokens near the top of the file.
+- Component functions or repeated class patterns for repeated visuals.
+- Asset paths that are easy to replace.
+
+Avoid:
+
+- One giant file for a full video.
+- Inline magic numbers without comments for timeline-critical values.
+- Duplicated colors that should be tokens.
+- Hidden copies of final frames without comments.
+- Global CSS that affects all mounted scenes.
+
+## Timeline Authoring Checklist
+
+For every timeline:
+
+- Set all initial states at time `0`.
+- Name or comment important cue times.
+- Keep object reveal order aligned to narration.
+- Use path progress for charts and line drawings.
+- Reveal graph points when the path reaches them.
+- Keep labels visible long enough to read.
+- Add final ambient motion only after main layout lands.
+- Avoid animations after the final hold unless ambient and subtle.
+
+## Text And Layout QA
+
+Before rendering final:
+
+- Check long words fit their containers.
+- Check captions will not cover key scene text.
+- Check chart labels do not overlap paths.
+- Check logo rows have spacing and no separator artifacts unless intended.
+- Check cards and tables are not oversized.
+- Check final frame matches reference scale.
+- Check mobile is not relevant unless output is responsive web, not fixed video.
+
+## Render Strategy
+
+Use draft renders while iterating:
+
+- Lower worker count if GPU/Chrome becomes unstable.
+- Use exact requested FPS for final.
+- Render only changed scenes after a surgical edit.
+- Keep old renders until the replacement is verified.
+- Generate proof frames from the rendered MP4, not only browser screenshots.
+
+## HyperFrames-Specific Risks
+
+Watch for:
+
+- Timeline ID mismatches.
+- Unscoped selectors in nested compositions.
+- GSAP overwriting existing CSS transforms.
+- CDN or font loading differences between preview and render.
+- Video/image assets not resolving in render workers.
+- Large files becoming hard for agents to inspect.
+
+## Component Patterns
+
+Useful reusable scene components:
+
+- `GlassPanel`
+- `LogoRow`
+- `CaptionSafeArea`
+- `ChartFrame`
+- `PathCurve`
+- `PointReveal`
+- `CameraSwipe`
+- `FinalFrameCarryover`
+- `CTAStack`
+
+These do not need to be formal JS classes. They can be CSS classes, HTML snippets, or helper functions as long as future agents can find and reuse them.
+
+## Proof Frame Checklist
+
+Extract:
+
+- First frame.
+- First major reveal.
+- Midpoint of main animation.
+- User-requested timestamp.
+- Final frame.
+- Next-scene carryover start if relevant.
+
+## Handoff Format
+
+Report:
+
+- Composition path.
+- Render path.
+- FPS and duration.
+- Proof frame paths.
+- Known lint warnings.
+- Whether warnings are pre-existing or introduced.

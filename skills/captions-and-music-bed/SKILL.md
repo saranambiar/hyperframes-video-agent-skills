@@ -65,3 +65,86 @@ Return:
 - Final mixed video path.
 - Audio/caption checks performed.
 
+## Caption Chunking Rules
+
+Split captions by:
+
+- Natural phrase boundaries.
+- Breath points.
+- Punctuation.
+- Maximum line length.
+- Visual complexity behind the caption.
+
+Do not split in a way that changes meaning. Do not add punctuation that the script does not contain.
+
+## Timing Sources
+
+Preferred order:
+
+1. Word-level alignment from final narration master.
+2. Phrase timestamps from user or transcript.
+3. Scene-level known timings plus manual phrase estimates.
+
+Never time captions from an obsolete pre-edit audio file.
+
+## Caption Preview Procedure
+
+Before full burn-in:
+
+- Pick a visually busy frame.
+- Render one still with caption style.
+- Show or inspect it.
+- Adjust font size, backing opacity, margin, and width.
+- Only then burn the full video.
+
+## Music Bed Build Procedure
+
+1. Probe source music duration.
+2. Pick source start offset.
+3. Decide hook volume.
+4. Decide narration-bed volume.
+5. Decide dense-explanation volume.
+6. Decide whether pauses stay ducked.
+7. Decide final CTA volume.
+8. Decide music end timestamp.
+9. Add fade out.
+10. Mix with limiter.
+
+## Music QA
+
+Listen/check:
+
+- First 5 seconds.
+- First narration entry.
+- Dense explanation section.
+- Long pause.
+- Tail restart.
+- Final 5 seconds.
+
+If music is "technically there" but inaudible, raise bed or reduce ducking threshold.
+
+## Caption Failure Recovery
+
+If captions are late:
+
+- Check alignment source.
+- Check whether silence/hook shifted global times.
+- Start chunks at first word, not middle of phrase.
+- Regenerate from final narration master.
+
+If captions are too big:
+
+- Reduce font size.
+- Increase max characters slightly only if still one line.
+- Lower backing opacity only if readable.
+
+## Handoff Format
+
+Report:
+
+- Caption source script.
+- Caption timing source.
+- ASS file path.
+- Music source and offset.
+- Ducking strategy.
+- Final silence duration.

@@ -1,6 +1,6 @@
 # Chart Storytelling Reference
 
-Use this when charts, curves, timelines, adoption gaps, ROI gaps, maturity stages, or score trajectories carry the story.
+Use this when charts, curves, timelines, adoption gaps, value gaps, maturity stages, or score trajectories carry the story.
 
 ## Narrative Order
 
@@ -37,4 +37,3 @@ Always extract frames at:
 - Curve labels appear.
 - Final chart state.
 - Next-scene carryover start.
-

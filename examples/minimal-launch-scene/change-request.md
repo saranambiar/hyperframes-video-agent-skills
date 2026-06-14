@@ -2,8 +2,8 @@
 
 ## Change
 
-- Requested change: Replace chart label `Workflow Gap` with `ROI Gap`.
-- Exact replacement text/audio/asset: `ROI Gap`
+- Requested change: Replace chart label `Workflow Gap` with `Value Gap`.
+- Exact replacement text/audio/asset: `Value Gap`
 - Affected scene: Scene 01
 - Affected source file: `compositions/scene-01.html`
 - Affected render file: `renders/scene-01.mp4`
@@ -28,12 +28,11 @@
 
 | Timestamp | What to verify | Output file |
 | --- | --- | --- |
-| 7.8s | Scene 01 final label says `ROI Gap` | `snapshots/proof/scene01-final.png` |
-| 8.55s | Scene 02 carryover also says `ROI Gap` | `snapshots/proof/scene02-start.png` |
+| 7.8s | Scene 01 final label says `Value Gap` | `snapshots/proof/scene01-final.png` |
+| 8.55s | Scene 02 carryover also says `Value Gap` | `snapshots/proof/scene02-start.png` |
 
 ## Acceptance
 
 - New label is visible in both final and carryover frames.
 - Final duration unchanged.
 - Audio stream present.
-

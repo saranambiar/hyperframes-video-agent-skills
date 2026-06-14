@@ -59,3 +59,89 @@ For full projects, produce or update:
 - Proof frames/contact sheet.
 - Short preview clips for risky sections.
 
+## Decision Checklist
+
+Before building, decide and record:
+
+- Whether this is a new video, scene addition, or final edit.
+- Whether the user approved any existing scenes.
+- Whether previous renders are source of truth or just previews.
+- Whether the final output needs captions.
+- Whether music should be added, replaced, lowered, or left alone.
+- Whether product-demo footage should be cropped.
+- Whether exact phrase timing matters.
+- Whether a silent hook, pause, or final hold exists.
+- Whether the final render should be 24, 30, 48, 60, or source FPS.
+- Whether the user expects proof before full render.
+
+## Agent Routing Table
+
+Use this routing table when several skills could apply:
+
+- User gives rough idea only: start with `video-intake-and-storyboard`.
+- User gives a reference final frame: intake first, then `motion-design-systems`, then `hyperframes-scene-builder`.
+- User says a scene must start from another scene: use `scene-continuity-and-transitions`.
+- User provides raw screen recording: use `product-demo-integration`.
+- User says captions are late or too big: use `captions-and-music-bed`.
+- User says narration changed: use `audio-sync-assembly`.
+- User says "everything is perfect except": use `render-qa-and-surgical-changes`.
+
+## Implementation Order
+
+Use this order for multi-scene work:
+
+1. Lock approved scenes.
+2. Prepare scene specs.
+3. Build or revise scene sources.
+4. Render scene drafts.
+5. Extract proof frames.
+6. Build narration-only assembly.
+7. Align captions.
+8. Burn captions.
+9. Build music bed.
+10. Mix final audio.
+11. Export final MP4.
+12. Generate proof sheet and preview clips.
+
+## What To Ask The User
+
+Ask only questions that change implementation:
+
+- Which final frame should match the reference if multiple references exist.
+- Whether to crop or preserve a product recording when both have tradeoffs.
+- Whether caption style is approved before burning a long final.
+- Whether music should be audible during narration pauses.
+- Whether a requested edit may change approved timing.
+- Whether branded logos may be recolored.
+
+Do not ask questions discoverable from files:
+
+- Clip durations.
+- Existing scene names.
+- Current frame rate.
+- Which source files contain a visible label.
+- Whether an audio stream exists.
+
+## Quality Gate
+
+Do not call a full video done until:
+
+- Final duration is known.
+- Final resolution and FPS are known.
+- Audio stream exists.
+- Captions are present if requested.
+- Scene boundary proofs exist.
+- Exact user-requested timestamp proofs exist.
+- Music ending behavior is checked.
+- Any subjective preview requested by the user was shown or explicitly skipped.
+
+## Handoff Format
+
+When finishing, report:
+
+- Final render path.
+- Important scene/render paths.
+- Commands or scripts used.
+- Proof frame or preview paths.
+- Tests performed.
+- Anything not verified.

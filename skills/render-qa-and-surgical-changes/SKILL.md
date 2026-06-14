@@ -72,3 +72,78 @@ Report:
 - Exact checks performed.
 - Any unverified subjective item.
 
+## Exact Timestamp Checks
+
+When the user names a timestamp:
+
+- Extract a frame at that exact time.
+- Extract one frame slightly before if appearance timing matters.
+- Extract one frame slightly after if disappearance timing matters.
+- Inspect the rendered final, not only the source scene.
+- If the same visual appears in the next scene, extract the boundary frame too.
+
+## Source Search Checklist
+
+Before patching:
+
+- Search all source scene files for the text or color.
+- Search assembly scripts for audio paths and durations.
+- Search caption scripts for old wording.
+- Search templates/examples only if public repo docs need updating.
+- Ignore generated renders unless doing visual QA.
+
+## Safe Audio Replacement
+
+For replacing one narration clip:
+
+- Probe old clip duration.
+- Probe new clip duration.
+- If same duration, replace path and rebuild.
+- If slightly different, decide whether to tempo-fit or retime visuals.
+- Confirm no downstream scene start moves unless requested.
+- Regenerate captions if spoken wording changed.
+
+## Safe Text Replacement
+
+For replacing visible text:
+
+- Patch source scene.
+- Search next scene for carryover copy.
+- Search old captions if spoken wording changed.
+- Re-render affected scene.
+- Rebuild final.
+- Extract proof frames at visible times.
+
+## Safe Theme Replacement
+
+For color cleanup:
+
+- Use a theme scanner.
+- Patch editable source only.
+- Do not recolor logos.
+- Do not recolor product-demo recordings.
+- Check SVG values.
+- Check next-scene carryovers.
+
+## QA Output Bundle
+
+Produce:
+
+- `probe.txt` or console summary.
+- `proof-*.png`.
+- `contact-sheet.jpg`.
+- `preview-*.mp4` for moving sync checks.
+- final render path.
+
+Generated QA files do not need to be committed unless they are public examples.
+
+## Stop Conditions
+
+Stop and ask if:
+
+- The requested change conflicts with locked scene approval.
+- The source asset for the visible final frame cannot be found.
+- A text/audio change implies a script change the user has not approved.
+- A logo recolor is requested but brand ownership is unclear.
+
+Otherwise make the smallest safe change and verify it.

@@ -70,3 +70,80 @@ Provide:
 - Boundary proof frames.
 - Exact timestamps checked.
 
+## Transition Types
+
+Use the transition type that matches the story:
+
+- Camera swipe: same world, different area.
+- Camera push: moving deeper into the same object.
+- Downward camera move: hook into main video.
+- Dot-to-data transition: diagram becomes chart.
+- Product landing: abstract scene moves into screen recording.
+- Blank field reset: audience needs a breath before new idea.
+
+Avoid hard cuts when the user says "seamlessly," "same object," "continue," or "camera movement."
+
+## Timing Guidelines
+
+- Fast scene-to-scene swipe: 0.4s to 1.0s.
+- Clean reset hold: 0.5s to 1.5s.
+- Product demo landing: long enough to understand first frame.
+- Final CTA transition: fast movement, then still hold.
+- Chart-to-question transition: leave clean negative space before cards appear.
+
+These are defaults; narration timing wins when explicit.
+
+## Carryover Audit
+
+Whenever a final frame changes, search:
+
+- Current scene source.
+- Next scene source.
+- Any old scene HTML with same title text.
+- Inline SVG text.
+- Axis labels.
+- Table headers.
+- CTA copy.
+- Theme colors.
+- Generated snapshots only for QA, not source.
+
+## Boundary Proof Procedure
+
+Extract frames:
+
+- 0.05s before boundary.
+- 0.05s after boundary.
+- Middle of transition.
+- First settled frame.
+
+If a label appears before the boundary and disappears after, the carryover source is stale.
+
+## Product Demo Boundaries
+
+For screen recordings:
+
+- Check the recording's first frame.
+- Check if there is a canvas/background around the UI.
+- Check whether transition should land on full recording or cropped UI.
+- Check if the recording contains scroll/zoom before cropping.
+- Avoid blank frames at the end.
+
+## Common User Corrections
+
+Map corrections to actions:
+
+- "It jumps" means boundary proof and scale/position check.
+- "It forgot the text" means carryover source search.
+- "It feels like a slide" means replace fade/cut with camera motion.
+- "Too fast" means extend transition or add hold after landing.
+- "Too empty" may mean add ambient motion, not new panels.
+
+## Handoff Format
+
+Report:
+
+- Transition type.
+- Boundary timestamps.
+- Changed carryover files.
+- Proof frames.
+- Whether source scene and next scene were both refreshed.

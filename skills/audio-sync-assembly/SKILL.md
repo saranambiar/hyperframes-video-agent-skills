@@ -78,3 +78,83 @@ Return:
 - Preview clips.
 - Proof frames and probe results.
 
+## Timeline Manifest Fields
+
+Track:
+
+- Scene ID.
+- Source render path.
+- Source duration.
+- Target duration.
+- Audio path.
+- Audio trim start/end.
+- Inserted silence.
+- Hold frames.
+- Segment retime ratios.
+- Global scene start.
+- Proof timestamps.
+
+This prevents later caption and music work from guessing.
+
+## Audio Replacement Rules
+
+When narration changes:
+
+- Probe old and new durations.
+- Decide whether visuals move or audio fits the existing slot.
+- If preserving downstream sync, use small audio-only tempo correction when acceptable.
+- If phrase timing changes materially, rebuild the segment map.
+- Regenerate captions from the new narration master.
+
+## Segment Mapping Heuristics
+
+Split on:
+
+- Scene transitions.
+- Product moments.
+- Question reveals.
+- Chart points.
+- Title reveal.
+- Final hold.
+- Narration pauses.
+
+Avoid splitting on arbitrary equal chunks.
+
+## Pause Handling
+
+For intentional silence:
+
+- Insert silent audio.
+- Hold or subtly animate visuals.
+- Do not let music rise unless requested.
+- Preserve global downstream scene starts by accounting for pause duration.
+
+## Preview Clip Strategy
+
+Generate preview clips for:
+
+- Updated narration insertion.
+- Product demo transition.
+- Question timing.
+- Caption style section.
+- Final 10 seconds.
+- Any scene boundary changed by the edit.
+
+## Common Mistakes
+
+- Retiming the full video when only one scene changed.
+- Letting replacement audio shift all downstream scenes.
+- Forgetting caption timings after narration changes.
+- Copying stream segments with non-keyframe starts and causing preview oddities.
+- Ending music before final video.
+
+## Handoff Format
+
+Report:
+
+- Final scene start map.
+- Audio files used.
+- Any tempo changes.
+- Any inserted pauses.
+- Preview paths.
+- Final duration.
