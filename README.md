@@ -4,6 +4,8 @@ Reusable skills, scripts, and production workflows for agent-led video creation 
 
 Community project from real HyperFrames video work; not an official HyperFrames or HeyGen repository.
 
+![Agent video workflow](media/workflow-animation.svg)
+
 ## What This Is
 
 This repository is a practical toolkit for coding agents that need to create, edit, assemble, and verify videos as code. It is designed to work alongside HyperFrames, FFmpeg, GSAP, and browser-based composition workflows.
@@ -36,6 +38,16 @@ This repo does not vendor HyperFrames, clone its official docs, or ship a render
 
 When a task is subjective, such as caption style, music level, crop choice, or final-frame composition, generate a preview or proof frame before rendering the full final output.
 
+## Quick Start For Codex
+
+Use directly from a project:
+
+```text
+Use the skills in /path/to/hyperframes-video-agent-skills to plan and build this HyperFrames video.
+```
+
+Or copy selected folders from `skills/` into your Codex skills directory if you want automatic skill discovery.
+
 ## Repository Map
 
 | Path | Purpose |
@@ -47,7 +59,7 @@ When a task is subjective, such as caption style, music level, crop choice, or f
 | `examples/` | Small synthetic examples that do not include private client assets. |
 | `media/` | README visuals, diagrams, and lightweight public demo assets. |
 
-## Planned Skill Map
+## Skill Map
 
 | Skill | Use When |
 | --- | --- |
@@ -60,6 +72,46 @@ When a task is subjective, such as caption style, music level, crop choice, or f
 | `audio-sync-assembly` | Narration, pauses, phrase timing, and scene retiming need to line up. |
 | `captions-and-music-bed` | Captions, subtitle style, music ducking, or final silence need handling. |
 | `render-qa-and-surgical-changes` | A final video needs proof frames, contact sheets, or tiny safe edits. |
+
+## Script Examples
+
+Probe a render:
+
+```powershell
+python scripts\probe_media.py path\to\final.mp4
+```
+
+Extract proof frames and a contact sheet:
+
+```powershell
+python scripts\extract_proof_frames.py path\to\final.mp4 `
+  --time intro=0.5 `
+  --time chart=27.0 `
+  --time ending=115.0 `
+  --output-dir snapshots\proof `
+  --contact-sheet snapshots\proof\sheet.jpg
+```
+
+Build ASS captions from simple timing JSON:
+
+```powershell
+python scripts\build_ass_captions.py `
+  --input examples\minimal-launch-scene\caption-events.json `
+  --output captions\sample.ass `
+  --style-template templates\caption-style.ass
+```
+
+Preview a timeline manifest as an FFmpeg assembly plan:
+
+```powershell
+python scripts\timeline_manifest_to_ffmpeg.py examples\minimal-launch-scene\timeline-manifest.json
+```
+
+Scan editable source for off-theme colors:
+
+```powershell
+python scripts\scan_theme_colors.py compositions --allow "#111111" --allow "#ef6f22"
+```
 
 ## Example Prompts
 
@@ -79,6 +131,15 @@ Use the surgical-change workflow. Replace this one label and one audio clip with
 Use the product-demo integration workflow. The screen recording has zooms, so check whether cropping cuts off important UI before deciding the crop.
 ```
 
+## Example Project
+
+See `examples/minimal-launch-scene/` for a public-safe toy example that shows:
+
+- A filled scene spec.
+- A timeline manifest.
+- Caption timing events.
+- A surgical change request.
+
 ## Contribution Principles
 
 - Add a skill only when it captures reusable production judgment.
@@ -91,4 +152,3 @@ Use the product-demo integration workflow. The screen recording has zooms, so ch
 ## License
 
 Apache-2.0. See `LICENSE`.
-

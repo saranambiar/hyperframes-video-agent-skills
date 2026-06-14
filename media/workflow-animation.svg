@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Agent video workflow animation</title>
+  <desc id="desc">Animated diagram showing prompt intake, scene build, audio sync, captions, proof frames, and final render.</desc>
+  <style>
+    :root {
+      --bg: #fbf7f0;
+      --ink: #111111;
+      --muted: #6f6961;
+      --accent: #ef6f22;
+      --glass: rgba(255,255,255,0.70);
+      --line: rgba(17,17,17,0.16);
+    }
+    .card {
+      fill: var(--glass);
+      stroke: rgba(255,255,255,0.86);
+      stroke-width: 2;
+      filter: url(#shadow);
+    }
+    .label {
+      font-family: Inter, Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      fill: var(--ink);
+      text-anchor: middle;
+    }
+    .sub {
+      font-family: Inter, Arial, sans-serif;
+      font-size: 14px;
+      fill: var(--muted);
+      text-anchor: middle;
+    }
+    .path {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 840;
+      stroke-dashoffset: 840;
+      animation: draw 4.8s ease-in-out infinite;
+    }
+    .pulse {
+      fill: var(--accent);
+      filter: url(#glow);
+      transform-origin: center;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    .step {
+      opacity: 0.58;
+      animation: lift 4.8s ease-in-out infinite;
+    }
+    .s1 { animation-delay: 0s; }
+    .s2 { animation-delay: 0.55s; }
+    .s3 { animation-delay: 1.1s; }
+    .s4 { animation-delay: 1.65s; }
+    .s5 { animation-delay: 2.2s; }
+    .s6 { animation-delay: 2.75s; }
+    @keyframes draw {
+      0% { stroke-dashoffset: 840; }
+      14% { stroke-dashoffset: 840; }
+      72% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes lift {
+      0%, 100% { opacity: 0.58; transform: translateY(0); }
+      10%, 28% { opacity: 1; transform: translateY(-8px); }
+      40% { opacity: 0.72; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: scale(0.88); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+  </style>
+  <defs>
+    <linearGradient id="page" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fffdf8"/>
+      <stop offset="0.58" stop-color="#fbf7f0"/>
+      <stop offset="1" stop-color="#f4e5d8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#2c2118" flood-opacity="0.12"/>
+    </filter>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="360" rx="34" fill="url(#page)"/>
+  <path class="path" d="M130 180 C230 98 325 98 425 180 S620 262 720 180 S915 98 1015 180"/>
+  <g class="step s1">
+    <rect class="card" x="50" y="92" width="160" height="126" rx="18"/>
+    <circle class="pulse" cx="130" cy="92" r="10"/>
+    <text class="label" x="130" y="154">Prompt</text>
+    <text class="sub" x="130" y="182">intake</text>
+  </g>
+  <g class="step s2">
+    <rect class="card" x="240" y="92" width="160" height="126" rx="18"/>
+    <circle class="pulse" cx="320" cy="92" r="10"/>
+    <text class="label" x="320" y="154">Spec</text>
+    <text class="sub" x="320" y="182">beats</text>
+  </g>
+  <g class="step s3">
+    <rect class="card" x="430" y="92" width="160" height="126" rx="18"/>
+    <circle class="pulse" cx="510" cy="92" r="10"/>
+    <text class="label" x="510" y="154">Scene</text>
+    <text class="sub" x="510" y="182">HyperFrames</text>
+  </g>
+  <g class="step s4">
+    <rect class="card" x="620" y="92" width="160" height="126" rx="18"/>
+    <circle class="pulse" cx="700" cy="92" r="10"/>
+    <text class="label" x="700" y="154">Sync</text>
+    <text class="sub" x="700" y="182">audio</text>
+  </g>
+  <g class="step s5">
+    <rect class="card" x="810" y="92" width="160" height="126" rx="18"/>
+    <circle class="pulse" cx="890" cy="92" r="10"/>
+    <text class="label" x="890" y="154">Captions</text>
+    <text class="sub" x="890" y="182">music</text>
+  </g>
+  <g class="step s6">
+    <rect class="card" x="1000" y="92" width="160" height="126" rx="18"/>
+    <circle class="pulse" cx="1080" cy="92" r="10"/>
+    <text class="label" x="1080" y="154">QA</text>
+    <text class="sub" x="1080" y="182">final MP4</text>
+  </g>
+  <text x="600" y="292" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#111111" text-anchor="middle">
+    prompt - storyboard - render - sync - caption - proof
+  </text>
+</svg>
+

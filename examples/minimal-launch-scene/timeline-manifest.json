@@ -1,0 +1,49 @@
+{
+  "project": {
+    "name": "minimal-launch-scene",
+    "width": 1920,
+    "height": 1080,
+    "fps": 60,
+    "output": "renders/minimal-final.mp4"
+  },
+  "segments": [
+    {
+      "id": "scene-01",
+      "video": "renders/scene-01.mp4",
+      "source_duration": 8.0,
+      "target_duration": 8.5,
+      "audio": "assets/scene-01-narration.mp3",
+      "strategy": "retime-to-audio"
+    },
+    {
+      "id": "scene-02",
+      "video": "renders/scene-02.mp4",
+      "source_duration": 10.0,
+      "target_duration": 12.0,
+      "audio": "assets/scene-02-narration.mp3",
+      "strategy": "segment-map",
+      "maps": [
+        { "source_start": 0.0, "source_end": 4.0, "target_duration": 4.5 },
+        { "hold_source_time": 4.0, "target_duration": 1.0 },
+        { "source_start": 4.0, "source_end": 10.0, "target_duration": 6.5 }
+      ]
+    }
+  ],
+  "captions": {
+    "script": "assets/script.txt",
+    "style": "templates/caption-style.ass",
+    "output": "captions/minimal-final.ass"
+  },
+  "music": {
+    "file": "assets/music.mp3",
+    "start_offset": 0.7,
+    "duck_under_narration": true,
+    "end_silence_seconds": 2.0
+  },
+  "proofs": [
+    { "time": 0.05, "label": "opening" },
+    { "time": 7.8, "label": "scene-01-final" },
+    { "time": 8.55, "label": "scene-02-start" }
+  ]
+}
+
