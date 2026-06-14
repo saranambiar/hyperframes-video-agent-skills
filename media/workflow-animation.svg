@@ -1,132 +1,273 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
-  <title id="title">Agent video workflow animation</title>
-  <desc id="desc">Animated diagram showing prompt intake, scene build, audio sync, captions, proof frames, and final render.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Agent video workflow render</title>
+  <desc id="desc">A warm, Claude-inspired 3D workflow render showing an agent video pipeline from prompt to proof.</desc>
   <style>
     :root {
-      --bg: #fbf7f0;
-      --ink: #111111;
-      --muted: #6f6961;
-      --accent: #ef6f22;
-      --glass: rgba(255,255,255,0.70);
-      --line: rgba(17,17,17,0.16);
+      --paper: #faf9f5;
+      --paper-warm: #f1ece3;
+      --ink: #141413;
+      --muted: #7a746a;
+      --line: #d7d0c3;
+      --clay: #c96f4a;
+      --clay-soft: #e8b49d;
+      --cream: #fffdf8;
     }
-    .card {
-      fill: var(--glass);
-      stroke: rgba(255,255,255,0.86);
-      stroke-width: 2;
-      filter: url(#shadow);
+
+    .eyebrow,
+    .caption,
+    .label,
+    .micro {
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      letter-spacing: 0;
     }
-    .label {
-      font-family: Inter, Arial, sans-serif;
-      font-size: 22px;
+
+    .eyebrow {
+      font-size: 13px;
       font-weight: 700;
+      fill: var(--clay);
+      text-transform: uppercase;
+    }
+
+    .caption {
+      font-size: 24px;
+      font-weight: 760;
+      fill: var(--ink);
+    }
+
+    .label {
+      font-size: 19px;
+      font-weight: 720;
       fill: var(--ink);
       text-anchor: middle;
     }
-    .sub {
-      font-family: Inter, Arial, sans-serif;
-      font-size: 14px;
+
+    .micro {
+      font-size: 12px;
+      font-weight: 620;
       fill: var(--muted);
       text-anchor: middle;
     }
-    .path {
+
+    .deck {
+      filter: url(#soft-shadow);
+      transform-origin: 600px 230px;
+      animation: breathe 8s ease-in-out infinite;
+    }
+
+    .tile {
+      filter: url(#tile-shadow);
+      animation: settle 8s ease-in-out infinite;
+    }
+
+    .tile-1 { animation-delay: 0.05s; }
+    .tile-2 { animation-delay: 0.35s; }
+    .tile-3 { animation-delay: 0.65s; }
+    .tile-4 { animation-delay: 0.95s; }
+    .tile-5 { animation-delay: 1.25s; }
+
+    .connector {
       fill: none;
-      stroke: var(--accent);
-      stroke-width: 5;
+      stroke: url(#flow-gradient);
+      stroke-width: 4;
       stroke-linecap: round;
-      stroke-dasharray: 840;
-      stroke-dashoffset: 840;
-      animation: draw 4.8s ease-in-out infinite;
+      stroke-linejoin: round;
+      stroke-dasharray: 760;
+      stroke-dashoffset: 760;
+      filter: url(#line-glow);
+      animation: trace 6.5s cubic-bezier(.55, 0, .22, 1) infinite;
     }
-    .pulse {
-      fill: var(--accent);
-      filter: url(#glow);
-      transform-origin: center;
-      animation: pulse 1.8s ease-in-out infinite;
+
+    .connector-base {
+      fill: none;
+      stroke: rgba(201, 111, 74, 0.20);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
-    .step {
-      opacity: 0.58;
-      animation: lift 4.8s ease-in-out infinite;
+
+    .trace-light {
+      fill: none;
+      stroke: rgba(255, 253, 248, 0.86);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-dasharray: 64 696;
+      stroke-dashoffset: 760;
+      animation: trace-light 6.5s cubic-bezier(.55, 0, .22, 1) infinite;
     }
-    .s1 { animation-delay: 0s; }
-    .s2 { animation-delay: 0.55s; }
-    .s3 { animation-delay: 1.1s; }
-    .s4 { animation-delay: 1.65s; }
-    .s5 { animation-delay: 2.2s; }
-    .s6 { animation-delay: 2.75s; }
-    @keyframes draw {
-      0% { stroke-dashoffset: 840; }
-      14% { stroke-dashoffset: 840; }
-      72% { stroke-dashoffset: 0; }
-      100% { stroke-dashoffset: 0; }
+
+    .tick {
+      stroke: rgba(20, 20, 19, 0.14);
+      stroke-width: 1.2;
     }
-    @keyframes lift {
-      0%, 100% { opacity: 0.58; transform: translateY(0); }
-      10%, 28% { opacity: 1; transform: translateY(-8px); }
-      40% { opacity: 0.72; transform: translateY(0); }
+
+    .surface-line {
+      stroke: rgba(20, 20, 19, 0.08);
+      stroke-width: 1;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; transform: scale(0.88); }
-      50% { opacity: 1; transform: scale(1.1); }
+
+    @keyframes trace {
+      0% { stroke-dashoffset: 760; opacity: 0.28; }
+      12% { opacity: 1; }
+      68% { stroke-dashoffset: 0; opacity: 1; }
+      82% { stroke-dashoffset: 0; opacity: 0.72; }
+      100% { stroke-dashoffset: 0; opacity: 0.28; }
+    }
+
+    @keyframes trace-light {
+      0% { stroke-dashoffset: 760; opacity: 0; }
+      14% { opacity: 0.8; }
+      66% { stroke-dashoffset: 0; opacity: 0.8; }
+      82%, 100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+
+    @keyframes settle {
+      0%, 100% { transform: translateY(0); }
+      42% { transform: translateY(-4px); }
+      72% { transform: translateY(0); }
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-3px) scale(1.002); }
     }
   </style>
+
   <defs>
-    <linearGradient id="page" x1="0" x2="1" y1="0" y2="1">
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0" stop-color="#fffdf8"/>
-      <stop offset="0.58" stop-color="#fbf7f0"/>
-      <stop offset="1" stop-color="#f4e5d8"/>
+      <stop offset="0.54" stop-color="#faf9f5"/>
+      <stop offset="1" stop-color="#eee5d8"/>
     </linearGradient>
-    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%">
-      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#2c2118" flood-opacity="0.12"/>
+
+    <linearGradient id="slab-top" x1="270" x2="930" y1="112" y2="328" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fffdf8"/>
+      <stop offset="0.58" stop-color="#f8f4ec"/>
+      <stop offset="1" stop-color="#e8ded0"/>
+    </linearGradient>
+
+    <linearGradient id="slab-side" x1="300" x2="920" y1="320" y2="382" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d9d1c5"/>
+      <stop offset="1" stop-color="#c7bfb3"/>
+    </linearGradient>
+
+    <linearGradient id="tile-face" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fffefb"/>
+      <stop offset="0.68" stop-color="#f7f2e8"/>
+      <stop offset="1" stop-color="#ece2d4"/>
+    </linearGradient>
+
+    <linearGradient id="tile-side" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#d8d0c3"/>
+      <stop offset="1" stop-color="#bdb4a8"/>
+    </linearGradient>
+
+    <linearGradient id="flow-gradient" x1="250" x2="950" y1="240" y2="176" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a35a3d"/>
+      <stop offset="0.46" stop-color="#c96f4a"/>
+      <stop offset="1" stop-color="#e0a184"/>
+    </linearGradient>
+
+    <radialGradient id="ambient" cx="50%" cy="45%" r="58%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.78"/>
+      <stop offset="0.55" stop-color="#f4e4d8" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#f4e4d8" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="soft-shadow" x="-20%" y="-25%" width="140%" height="155%">
+      <feDropShadow dx="0" dy="30" stdDeviation="26" flood-color="#33291f" flood-opacity="0.16"/>
     </filter>
-    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
+
+    <filter id="tile-shadow" x="-25%" y="-35%" width="150%" height="170%">
+      <feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#33291f" flood-opacity="0.15"/>
+    </filter>
+
+    <filter id="line-glow" x="-20%" y="-80%" width="140%" height="260%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.78  0 1 0 0 0.42  0 0 1 0 0.26  0 0 0 0.45 0" result="warm"/>
       <feMerge>
-        <feMergeNode in="blur"/>
+        <feMergeNode in="warm"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+
+    <clipPath id="slab-clip">
+      <path d="M288 122 L896 74 L1044 258 L405 343 Z"/>
+    </clipPath>
   </defs>
-  <rect width="1200" height="360" rx="34" fill="url(#page)"/>
-  <path class="path" d="M130 180 C230 98 325 98 425 180 S620 262 720 180 S915 98 1015 180"/>
-  <g class="step s1">
-    <rect class="card" x="50" y="92" width="160" height="126" rx="18"/>
-    <circle class="pulse" cx="130" cy="92" r="10"/>
-    <text class="label" x="130" y="154">Prompt</text>
-    <text class="sub" x="130" y="182">intake</text>
+
+  <rect width="1200" height="420" fill="url(#background)"/>
+  <rect width="1200" height="420" fill="url(#ambient)"/>
+
+  <g transform="translate(0 2)">
+    <text class="eyebrow" x="96" y="76">HyperFrames video agent skills</text>
+    <text class="caption" x="96" y="111">From prompt to proofed render.</text>
   </g>
-  <g class="step s2">
-    <rect class="card" x="240" y="92" width="160" height="126" rx="18"/>
-    <circle class="pulse" cx="320" cy="92" r="10"/>
-    <text class="label" x="320" y="154">Spec</text>
-    <text class="sub" x="320" y="182">beats</text>
+
+  <g class="deck">
+    <path d="M288 122 L896 74 L1044 258 L405 343 Z" fill="url(#slab-top)" stroke="rgba(255,255,255,0.82)" stroke-width="2"/>
+    <path d="M405 343 L1044 258 L1018 292 L397 382 Z" fill="url(#slab-side)" opacity="0.72"/>
+    <path d="M288 122 L405 343 L397 382 L266 158 Z" fill="#d2cabe" opacity="0.72"/>
+
+    <g clip-path="url(#slab-clip)" opacity="0.66">
+      <path class="surface-line" d="M344 142 L474 326"/>
+      <path class="surface-line" d="M465 132 L596 310"/>
+      <path class="surface-line" d="M586 122 L718 294"/>
+      <path class="surface-line" d="M707 112 L840 278"/>
+      <path class="surface-line" d="M828 102 L962 262"/>
+      <path class="surface-line" d="M337 183 L945 112"/>
+      <path class="surface-line" d="M368 239 L994 162"/>
+      <path class="surface-line" d="M399 295 L1026 213"/>
+    </g>
+
+    <path class="connector-base" d="M319 236 C410 185 487 185 560 219 C628 250 698 250 767 210 C841 167 912 164 986 204"/>
+    <path class="connector" d="M319 236 C410 185 487 185 560 219 C628 250 698 250 767 210 C841 167 912 164 986 204"/>
+    <path class="trace-light" d="M319 236 C410 185 487 185 560 219 C628 250 698 250 767 210 C841 167 912 164 986 204"/>
+
+    <g class="tile tile-1">
+      <path d="M270 205 L370 193 L410 238 L308 254 Z" fill="url(#tile-face)" stroke="rgba(255,255,255,0.86)" stroke-width="1.5"/>
+      <path d="M308 254 L410 238 L410 266 L309 282 Z" fill="url(#tile-side)" opacity="0.72"/>
+      <text class="label" x="340" y="228">Intake</text>
+      <text class="micro" x="340" y="246">prompt</text>
+    </g>
+
+    <g class="tile tile-2">
+      <path d="M420 160 L520 148 L560 193 L458 209 Z" fill="url(#tile-face)" stroke="rgba(255,255,255,0.86)" stroke-width="1.5"/>
+      <path d="M458 209 L560 193 L560 221 L459 237 Z" fill="url(#tile-side)" opacity="0.72"/>
+      <text class="label" x="490" y="183">Spec</text>
+      <text class="micro" x="490" y="201">beats</text>
+    </g>
+
+    <g class="tile tile-3">
+      <path d="M580 190 L690 176 L733 224 L621 242 Z" fill="url(#tile-face)" stroke="rgba(255,255,255,0.86)" stroke-width="1.5"/>
+      <path d="M621 242 L733 224 L733 253 L622 272 Z" fill="url(#tile-side)" opacity="0.72"/>
+      <text class="label" x="657" y="215">Scene</text>
+      <text class="micro" x="657" y="233">render</text>
+    </g>
+
+    <g class="tile tile-4">
+      <path d="M744 145 L844 133 L884 178 L782 194 Z" fill="url(#tile-face)" stroke="rgba(255,255,255,0.86)" stroke-width="1.5"/>
+      <path d="M782 194 L884 178 L884 206 L783 222 Z" fill="url(#tile-side)" opacity="0.72"/>
+      <text class="label" x="814" y="168">Sync</text>
+      <text class="micro" x="814" y="186">audio</text>
+    </g>
+
+    <g class="tile tile-5">
+      <path d="M890 190 L1004 176 L1048 224 L932 244 Z" fill="url(#tile-face)" stroke="rgba(255,255,255,0.86)" stroke-width="1.5"/>
+      <path d="M932 244 L1048 224 L1048 253 L933 274 Z" fill="url(#tile-side)" opacity="0.72"/>
+      <text class="label" x="970" y="215">Proof</text>
+      <text class="micro" x="970" y="233">final</text>
+    </g>
+
+    <g opacity="0.88">
+      <line class="tick" x1="328" y1="257" x2="330" y2="280"/>
+      <line class="tick" x1="486" y1="214" x2="490" y2="238"/>
+      <line class="tick" x1="650" y1="249" x2="653" y2="274"/>
+      <line class="tick" x1="805" y1="204" x2="809" y2="228"/>
+      <line class="tick" x1="956" y1="245" x2="960" y2="269"/>
+    </g>
   </g>
-  <g class="step s3">
-    <rect class="card" x="430" y="92" width="160" height="126" rx="18"/>
-    <circle class="pulse" cx="510" cy="92" r="10"/>
-    <text class="label" x="510" y="154">Scene</text>
-    <text class="sub" x="510" y="182">HyperFrames</text>
-  </g>
-  <g class="step s4">
-    <rect class="card" x="620" y="92" width="160" height="126" rx="18"/>
-    <circle class="pulse" cx="700" cy="92" r="10"/>
-    <text class="label" x="700" y="154">Sync</text>
-    <text class="sub" x="700" y="182">audio</text>
-  </g>
-  <g class="step s5">
-    <rect class="card" x="810" y="92" width="160" height="126" rx="18"/>
-    <circle class="pulse" cx="890" cy="92" r="10"/>
-    <text class="label" x="890" y="154">Captions</text>
-    <text class="sub" x="890" y="182">music</text>
-  </g>
-  <g class="step s6">
-    <rect class="card" x="1000" y="92" width="160" height="126" rx="18"/>
-    <circle class="pulse" cx="1080" cy="92" r="10"/>
-    <text class="label" x="1080" y="154">QA</text>
-    <text class="sub" x="1080" y="182">final MP4</text>
-  </g>
-  <text x="600" y="292" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#111111" text-anchor="middle">
-    prompt - storyboard - render - sync - caption - proof
+
+  <text x="600" y="390" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif" font-size="15" font-weight="650" fill="#7a746a" text-anchor="middle">
+    skills, scripts, templates, workflows - designed for careful agent-led video production
   </text>
 </svg>
-
