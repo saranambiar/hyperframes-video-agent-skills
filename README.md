@@ -142,6 +142,10 @@ See `examples/minimal-launch-scene/` for a public-safe toy example that shows:
 
 ## Contribution Principles
 
+This project is for reusable production knowledge, not one-off project notes. Good contributions should help a future video agent make better decisions, avoid known failure modes, or run a fragile workflow more reliably.
+
+If you are contributing a pattern from a real project, generalize names, assets, copy, and brand specifics before opening a PR. Include the problem it solves and the verification step that proves it works.
+
 - Add a skill only when it captures reusable production judgment.
 - Keep each `SKILL.md` concise and action-oriented.
 - Put detailed patterns in `references/`.
