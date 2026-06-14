@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Node / HyperFrames projects
+node_modules/
+.hyperframes/
+.thumbnails/
+
+# Generated video artifacts
+*.mp4
+*.mov
+*.m4v
+*.webm
+*.wav
+*.mp3
+*.aac
+
+# Generated proof outputs
+renders/
+snapshots/
+assembly/
+captions/*.ass
+captions/*.json
+
+# Local environment
+.env
+.DS_Store
+Thumbs.db
+
